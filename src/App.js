@@ -1,18 +1,30 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { Input, Button } from 'reactbulma'
 
 class App extends Component {
+  state = {
+    posts: [{
+      id: 1,
+      username: "John",
+      content: "Heyooooooo"
+    }]
+  }
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <form>
+            <label htmlFor="username"></label><br />
+            <Input id="normal" placeholder="username" /><br /><br />
+            <label htmlFor="message"></label>
+            <Input large id="large" placeholder="your message" /><br /> <br />
+          <Button primary>Submit</Button>
+        </form><br /><br />
+        {
+          this.state.posts.map(post => <p>{post.username}: {post.content}</p>)
+        }
+
       </div>
     );
   }
